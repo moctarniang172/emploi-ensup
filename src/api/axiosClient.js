@@ -6,7 +6,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://backend-emploi-temp.onrender.com',
+  baseURL: import.meta.env.VITE_API_URL || 'https://backend-emploi-temp.onrender.com'+'/api', 
 });
 
 axiosClient.interceptors.request.use((config) => {
