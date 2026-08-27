@@ -1,29 +1,29 @@
 import axiosClient from './axiosClient';
 
 export const listCreneaux = (filtres = {}) =>
-  axiosClient.get('/creneaux', { params: filtres }).then((res) => res.data.data.creneaux);
+  axiosClient.get('/api/creneaux', { params: filtres }).then((res) => res.data.data.creneaux);
 
 export const getCreneauxParClasse = (classeId, anneeScolaire) =>
   axiosClient
-    .get(`/creneaux/classe/${classeId}`, { params: { anneeScolaire } })
+    .get(`/api/creneaux/classe/${classeId}`, { params: { anneeScolaire } })
     .then((res) => res.data.data.creneaux);
 
 export const getCreneauxParProfesseur = (professeurId, anneeScolaire) =>
   axiosClient
-    .get(`/creneaux/professeur/${professeurId}`, { params: { anneeScolaire } })
+    .get(`/api/creneaux/professeur/${professeurId}`, { params: { anneeScolaire } })
     .then((res) => res.data.data.creneaux);
 
 // Renvoie { hasConflict, conflits } sans jamais écrire en base.
 export const checkConflicts = (donnees) =>
-  axiosClient.post('/creneaux/check-conflicts', donnees).then((res) => res.data.data);
+  axiosClient.post('/api/creneaux/check-conflicts', donnees).then((res) => res.data.data);
 
 export const createCreneau = (donnees) =>
-  axiosClient.post('/creneaux', donnees).then((res) => res.data.data.creneau);
+  axiosClient.post('/api/creneaux', donnees).then((res) => res.data.data.creneau);
 
 export const updateCreneau = (id, donnees) =>
-  axiosClient.put(`/creneaux/${id}`, donnees).then((res) => res.data.data.creneau);
+  axiosClient.put(`/api/creneaux/${id}`, donnees).then((res) => res.data.data.creneau);
 
-export const deleteCreneau = (id) => axiosClient.delete(`/creneaux/${id}`);
+export const deleteCreneau = (id) => axiosClient.delete(`/api/creneaux/${id}`);
 
 // Télécharge le PDF de l'emploi du temps et déclenche le téléchargement dans le navigateur.
 // Le fichier nécessite le token d'authentification (via axiosClient), donc on ne peut pas
@@ -38,7 +38,7 @@ async function telechargerPdf(url, nomFichier) {
 }
 
 export const telechargerPdfClasse = (classeId, nomClasse) =>
-  telechargerPdf(`/creneaux/classe/${classeId}/pdf`, `emploi-du-temps-${nomClasse}.pdf`);
+  telechargerPdf(`/api/creneaux/classe/${classeId}/pdf`, `emploi-du-temps-${nomClasse}.pdf`);
 
 export const telechargerPdfProfesseur = (professeurId, nomProfesseur) =>
-  telechargerPdf(`/creneaux/professeur/${professeurId}/pdf`, `emploi-du-temps-${nomProfesseur}.pdf`);
+  telechargerPdf(`/api/creneaux/professeur/${professeurId}/pdf`, `emploi-du-temps-${nomProfesseur}.pdf`);

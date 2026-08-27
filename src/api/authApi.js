@@ -5,9 +5,9 @@ export function login(email, password) {
 }
 
 export function getMe() {
-  return axiosClient.get('/auth/me').then((res) => res.data.data.user);
+  return axiosClient.get('/api/auth/me').then((res) => res.data.data.user);
 }
 
 export function changePassword(ancienMotDePasse, nouveauMotDePasse) {
-  return axiosClient.put('/auth/change-password', { ancienMotDePasse, nouveauMotDePasse });
+  return axiosClient.put('/api/auth/change-password', { ancienMotDePasse, nouveauMotDePasse });
 }
