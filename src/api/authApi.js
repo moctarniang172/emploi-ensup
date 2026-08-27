@@ -1,7 +1,7 @@
 import axiosClient from './axiosClient';
 
 export function login(email, password) {
-  return axiosClient.post('/auth/login', { email, password }).then((res) => res.data.data);
+  return axiosClient.post('/api/auth/login', { email, password }).then((res) => res.data.data);
 }
 
 export function getMe() {
